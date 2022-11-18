@@ -3,7 +3,11 @@
         "browser": true,
         "es2021": true
     },
-    "extends": "standard-with-typescript",
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
     "overrides": [
     ],
     "parserOptions": {
@@ -11,5 +15,7 @@
         "sourceType": "module"
     },
     "rules": {
+        "@typescript-eslint/no-inferrable-types": "off",
+        "no-useless-escape": "off"
     }
 }

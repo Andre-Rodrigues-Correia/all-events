@@ -6,6 +6,13 @@ const StateSchema = new Schema(
     name: {
       type: String,
       required: true,
+      unique: true,
+      trim: true,
+    },
+    sigla: {
+      type: String,
+      required: true,
+      unique: true,
       trim: true,
     },
     country: {

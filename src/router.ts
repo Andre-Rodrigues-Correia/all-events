@@ -1,9 +1,9 @@
 import { Router } from "express";
-import cityEventsRoute from './routes/cityEventsRoute';
+import countryRoutes from './routes/countryRouter'
 
 const router = Router();
 
-router.use('/eventos', cityEventsRoute);
+router.use('/country', countryRoutes);
 
 export default router;
 
