@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "a89f23ed-8c2b-40fe-8d3e-82fb9ef88468",
+		"name": "all-events",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21645490"
+	},
+	"item": [
+		{
+			"name": "Country",
+			"item": [
+				{
+					"name": "create country",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Brasil\",\r\n    \"coin\": \"R$\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/country",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"country"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update country",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"coin\": \"RS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/country/{{ID_COUNTRY}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"country",
+								"{{ID_COUNTRY}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete country Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Brasil\",\r\n    \"coin\": \"R\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/country/{{ID_COUNTRY}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"country",
+								"{{ID_COUNTRY}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all countries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/country",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"country"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find a country",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/country/{{ID_COUNTRY}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"country",
+								"{{ID_COUNTRY}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:9090",
+			"type": "string"
+		},
+		{
+			"key": "ID_COUNTRY",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

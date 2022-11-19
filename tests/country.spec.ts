@@ -71,7 +71,6 @@ describe('test route /country', () => {
 
     test('should update country with sucess', async () => {
         const country = await Country.findOne({name: countryName});
-        console.log(country)
         return request(app).patch(`/country/${country?._id}`).send({
             coin: '$',
         }).then((res) => {
