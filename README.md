@@ -100,7 +100,7 @@ Install all-events whith npm
 
 ---
 
-#### send a country
+#### Create a country
 
 ```http
   POST /country/
