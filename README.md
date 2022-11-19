@@ -35,7 +35,7 @@ Install all-events whith npm
 ```
 
 ```bash
-  npm install my-project
+  npm install
 ```
 
 ```bash
