@@ -4,7 +4,7 @@
   "description": "Rest API with typescript that returns all events of a given city, whether seasonal or not",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage --runInBand --forceExit",
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
     "secure-mode": "jest --watch --verbose=true"
   },

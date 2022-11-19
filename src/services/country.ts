@@ -12,8 +12,8 @@ const findOne = async (filter: object) => {
    return await Country.findOne(filter)
  };
 
-const updateOne = async (filter: object) => {
-   return await Country.updateOne(filter);
+const updateOne = async (filter: object, countryUpdate: object) => {
+   return await Country.updateOne(filter, countryUpdate);
 };
 
 const deleteOne = async (filter: object) => {

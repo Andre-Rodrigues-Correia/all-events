@@ -49,11 +49,11 @@ const updateCountry = async (req: Request, res: Response) => {
     const id: string = req.params.id;
 
     try {
-        const country = await updateOne({_id: id});
+        const country = await updateOne({_id: id}, req.body);
         if(country.modifiedCount === 0){
             return res.status(404).json({message: 'Country not updated'});
         }
-        return res.status(200).json(country);
+        return res.status(200).json({message: 'Country updated with success'});
     } catch (error: any) {
         logger.error(`Erro na aplicação: ${error.message}`)
         return res.status(400).json({message: error.message})
@@ -69,7 +69,7 @@ const deleteCountry = async (req: Request, res: Response) => {
             return res.status(404).json({message: 'Country not deleted'});
         }
 
-        return res.status(200).json(country);
+        return res.status(200).json({message: 'Country deleted with success'});
     } catch (error: any) {
         logger.error(`Erro na aplicação: ${error.message}`)
         return res.status(400).json({message: error.message})

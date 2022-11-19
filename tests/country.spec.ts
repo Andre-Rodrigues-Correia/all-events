@@ -7,7 +7,7 @@ beforeAll(async () =>{
     connectDB();
 })
 afterAll(async () => {
-    Country.collection.drop();
+    //Country.collection.drop();
 })
 describe('test route /country', () => {
 
@@ -71,11 +71,12 @@ describe('test route /country', () => {
 
     test('should update country with sucess', async () => {
         const country = await Country.findOne({name: countryName});
+        console.log(country)
         return request(app).patch(`/country/${country?._id}`).send({
-            coin: countryCoin + 'updated',
+            coin: '$',
         }).then((res) => {
             expect(res.status).toEqual(200);
-            expect(res.body.modifiedCount).toEqual(1);
+            expect(res.body.message).toEqual('Country updated with success');
         })
     })
 
@@ -83,7 +84,7 @@ describe('test route /country', () => {
         const country = await Country.findOne({name: countryName});
         return request(app).delete(`/country/${country?._id}`).then((res) => {
             expect(res.status).toEqual(200);
-            expect(res.body.deletedCount).toEqual(1);
+            expect(res.body.message).toEqual('Country deleted with success');
         })
     })
 
