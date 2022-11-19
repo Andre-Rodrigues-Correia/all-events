@@ -143,7 +143,7 @@ Install all-events whith npm
         message: "Country update with sucess"
     }
 
-
+---
 #### delete a country
 
 ```http
