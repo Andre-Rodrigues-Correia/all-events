@@ -13,6 +13,7 @@ describe('test route /country', () => {
 
     const countryName: string = `name${Date.now()}`;
     const countryCoin: string = `${Date.now()}`;
+    let id: any;
 
     test('should create country in database with sucess', async () => {
         return request(app).post('/country').send({
@@ -31,7 +32,7 @@ describe('test route /country', () => {
             coin: countryCoin,
         }).then((res) => {
             expect(res.status).toEqual(400);
-            expect(res.body.message).toEqual(`E11000 duplicate key error collection: all-events-staging.countries index: name_1 dup key: { name: \"${countryName}\" }`);
+            expect(res.body.message).toEqual(`Country already exists`);
         })
     })
 
@@ -61,17 +62,53 @@ describe('test route /country', () => {
 
     test('should ruturn a country', async () => {
         const country = await Country.findOne({name: countryName})
+        id = country?._id;
         return request(app).get(`/country/${country?._id}`).then((res) => {
             expect(res.status).toEqual(200);
             expect(res.body.name).toEqual(countryName)
         })
     })
 
-    test('should not ruturn a country', async () => {
-        const country = await Country.findOne({name: countryName})
-        return request(app).get(`/country/${country?._id + '1'}`).then((res) => {
-            expect(res.status).toEqual(400);
-            expect(res.body.message).toEqual( `Cast to ObjectId failed for value "${country?._id  + '1'}" (type string) at path "_id" for model "Country"`)
+    test('should update country with sucess', async () => {
+        const country = await Country.findOne({name: countryName});
+        return request(app).patch(`/country/${country?._id}`).send({
+            coin: countryCoin + 'updated',
+        }).then((res) => {
+            expect(res.status).toEqual(200);
+            expect(res.body.modifiedCount).toEqual(1);
         })
     })
+
+    test('should delete country with sucess', async () => {
+        const country = await Country.findOne({name: countryName});
+        return request(app).delete(`/country/${country?._id}`).then((res) => {
+            expect(res.status).toEqual(200);
+            expect(res.body.deletedCount).toEqual(1);
+        })
+    })
+
+    test('should not ruturn a country', async () => {
+        return request(app).get(`/country/${id}`).then((res) => {
+            expect(res.status).toEqual(404);
+            expect(res.body.message).toEqual('Country not found')
+        })
+    })
+
+    test('should not update country with sucess', async () => {
+        return request(app).patch(`/country/${id}`).send({
+            coin: countryCoin + 'updated',
+        }).then((res) => {
+            expect(res.status).toEqual(404);
+            expect(res.body.message).toEqual('Country not updated');
+        })
+    })
+    test('should not delete country with sucess', async () => {
+        return request(app).delete(`/country/${id}`).then((res) => {
+            expect(res.status).toEqual(404);
+            expect(res.body.message).toEqual(`Country not deleted`);
+        })
+    })
+    
+
+    
 })

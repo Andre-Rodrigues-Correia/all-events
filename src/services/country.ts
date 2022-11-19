@@ -8,8 +8,16 @@ const findAll = async () => {
    return await Country.find();
 };
 
-const findOne = async (filter: string) => {
-    return await Country.findById(filter);
+const findOne = async (filter: object) => {
+   return await Country.findOne(filter)
  };
 
-export { save, findAll, findOne };
+const updateOne = async (filter: object) => {
+   return await Country.updateOne(filter);
+};
+
+const deleteOne = async (filter: object) => {
+   return await Country.deleteOne(filter);
+}
+
+export { save, findAll, findOne, updateOne, deleteOne };
