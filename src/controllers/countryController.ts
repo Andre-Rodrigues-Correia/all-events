@@ -1,5 +1,5 @@
 import { save, findAll, findOne, updateOne, deleteOne } from '../services/country'
-import {Request, Response, NextFunction} from 'express'
+import {Request, Response } from 'express'
 import logger from "../utils/Logger";
 
 const createCountry = async (req: Request, res: Response) => {

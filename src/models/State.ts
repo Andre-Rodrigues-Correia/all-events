@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import {Schema, model} from 'mongoose';
+import { stateInterface } from '../interfaces/Interfaces';
 
-const { Schema } = mongoose;
 const StateSchema = new Schema(
   {
     name: {
@@ -9,7 +9,7 @@ const StateSchema = new Schema(
       unique: true,
       trim: true,
     },
-    sigla: {
+    initials: {
       type: String,
       required: true,
       unique: true,
@@ -17,9 +17,10 @@ const StateSchema = new Schema(
     },
     country: {
       type: Schema.Types.ObjectId,
+      required: true,
       ref: 'Country'
     },
   },
   { timestamps: true },
 );
-export default mongoose.model('State', StateSchema);
+export default model<stateInterface>('State', StateSchema);

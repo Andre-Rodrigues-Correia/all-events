@@ -28,7 +28,7 @@ const EventSchema = new Schema(
         ref: 'Category'
       }
     ],
-    adress: {
+    address: {
       street: {
         type: String,
         required: true,
@@ -46,6 +46,14 @@ const EventSchema = new Schema(
       city: {
         type: Schema.Types.ObjectId,
         ref: 'City'
+      },
+      state: {
+        type: Schema.Types.ObjectId,
+        ref: 'State'
+      },
+      country: {
+        type: Schema.Types.ObjectId,
+        ref: 'Country'
       }
     },
     start_date: {

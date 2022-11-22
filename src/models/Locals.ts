@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import {Schema, model} from 'mongoose';
+import { localInterface } from '../interfaces/Interfaces';
 
-const { Schema } = mongoose;
 const LocalSchema = new Schema(
   {
     name: {
@@ -23,7 +23,7 @@ const LocalSchema = new Schema(
         ref: 'Type'
       }
     ],
-    adress: {
+    address: {
       street: {
         type: String,
         required: true,
@@ -41,9 +41,17 @@ const LocalSchema = new Schema(
       city: {
         type: Schema.Types.ObjectId,
         ref: 'City'
+      },
+      state: {
+        type: Schema.Types.ObjectId,
+        ref: 'State'
+      },
+      country: {
+        type: Schema.Types.ObjectId,
+        ref: 'Country'
       }
     },
   },
   { timestamps: true },
 );
-export default mongoose.model('Local', LocalSchema);
+export default model<localInterface>('Local', LocalSchema);

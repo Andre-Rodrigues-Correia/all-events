@@ -108,6 +108,28 @@ describe('test route /country', () => {
             expect(res.body.message).toEqual(`Country not deleted`);
         })
     })
+
+    test('should not ruturn a country with invalid id', async () => {
+        return request(app).get(`/country/1234`).then((res) => {
+            expect(res.status).toEqual(400);
+            expect(res.body.message).toEqual('invalid ID')
+        })
+    })
+
+    test('should not update country with invalid id', async () => {
+        return request(app).patch(`/country/1234`).send({
+            coin: countryCoin + 'updated',
+        }).then((res) => {
+            expect(res.status).toEqual(400);
+            expect(res.body.message).toEqual('invalid ID');
+        })
+    })
+    test('should not delete country with invalid id', async () => {
+        return request(app).delete(`/country/1234`).then((res) => {
+            expect(res.status).toEqual(400);
+            expect(res.body.message).toEqual(`invalid ID`);
+        })
+    })
     
 
     

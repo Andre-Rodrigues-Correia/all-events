@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import {Schema, model} from 'mongoose';
+import { countryInterface } from '../interfaces/Interfaces';
 
-const { Schema } = mongoose;
 const CountrySchema = new Schema(
   {
     name: {
@@ -16,4 +16,4 @@ const CountrySchema = new Schema(
   },
   { timestamps: true },
 );
-export default mongoose.model('Country', CountrySchema);
+export default model<countryInterface>('Country', CountrySchema);
