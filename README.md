@@ -35,7 +35,7 @@ Install all-events whith npm
 ```
 
 ```bash
-  npm install my-project
+  npm install
 ```
 
 ```bash
@@ -100,7 +100,7 @@ Install all-events whith npm
 
 ---
 
-#### send a country
+#### Create a country
 
 ```http
   POST /country/
@@ -143,7 +143,7 @@ Install all-events whith npm
         message: "Country update with sucess"
     }
 
-
+---
 #### delete a country
 
 ```http
