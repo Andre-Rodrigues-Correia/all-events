@@ -13,4 +13,8 @@ app.use(
     router,
 )
 
+router.all('/*', (req, res) => {
+    return res.status(404).json({message: 'route not found'})
+})
+
 export default app;

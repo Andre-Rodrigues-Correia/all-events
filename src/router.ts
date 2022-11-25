@@ -17,6 +17,10 @@ router.use('/type', typeRoutes);
 router.use('/local', localRoutes);
 router.use('/event', eventRoutes);
 
+router.all('/*', (req, res) => {
+    return res.status(404).json({message: 'route not found'})
+})
+
 export default router;
 
 

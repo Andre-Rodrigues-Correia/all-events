@@ -4,7 +4,7 @@ const save = async (local = {})=> {
     return await Local.create(local);
 }
 
-const findAll = async () => {
+const findAll = async (filter: object = {}) => {
     return await Local.find();
 }
 

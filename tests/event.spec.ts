@@ -1,10 +1,7 @@
 import request from 'supertest';
 import app from '../src/server';
 import { connectDB } from '../src/database/connection';
-import City from '../src/models/City';
 import { eventInterface } from '../src/interfaces/Interfaces';
-import State from '../src/models/State';
-import Country from '../src/models/Country';
 import mongoose from 'mongoose';
 import Event from '../src/models/Event';
 

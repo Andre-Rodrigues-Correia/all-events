@@ -4,8 +4,8 @@ const save = async (event = {})=> {
     return await Event.create(event);
 }
 
-const findAll = async () => {
-    return await Event.find();
+const findAll = async (filter: object = {}) => {
+    return await Event.find(filter);
 }
 
 const findOne = async (filter: object = {}) => {
