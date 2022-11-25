@@ -1,4 +1,5 @@
 import {Request, Response, NextFunction} from 'express'
+import { isValidObjectId } from 'mongoose';
 
 const stateCreateValidation = (req: Request, res: Response, next: NextFunction) => {
     const {name, initials, country} = req.body;
@@ -12,6 +13,10 @@ const stateCreateValidation = (req: Request, res: Response, next: NextFunction) 
 
     if(!country){
         return res.status(400).json({message: 'country ID is required'})
+    }
+    
+    if(!isValidObjectId(country)){
+        return res.status(400).json({message: 'country ID is invalid'})
     }
 
     next()

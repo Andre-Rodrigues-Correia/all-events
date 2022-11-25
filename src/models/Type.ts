@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import {Schema, model} from 'mongoose';
+import { typeInterface } from '../interfaces/Interfaces';
 
-const { Schema } = mongoose;
 const TypeSchema = new Schema(
   {
     name: {
@@ -11,4 +11,4 @@ const TypeSchema = new Schema(
   },
   { timestamps: true },
 );
-export default mongoose.model('Type', TypeSchema);
+export default model<typeInterface>('Type', TypeSchema);

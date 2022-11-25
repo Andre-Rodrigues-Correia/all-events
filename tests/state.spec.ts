@@ -4,14 +4,16 @@ import { connectDB } from '../src/database/connection';
 import State from '../src/models/State';
 import Country from '../src/models/Country';
 import { countryInterface, stateInterface } from '../src/interfaces/Interfaces';
+import { createCountry } from '../src/controllers/countryController';
+import { response } from 'express';
 
 beforeAll(async () =>{
     connectDB();
 })
 afterAll(async () => {
-    State.collection.drop();
+    //State.collection.drop();
 })
-describe('test route /country', () => {
+describe('test route /state', () => {
     const stateName: string = `Name${Date.now()}`;
     const stateInitials: string = `Initials${Date.now()}`;
     let country: countryInterface;
@@ -72,6 +74,17 @@ describe('test route /country', () => {
             expect(res.status).toEqual(400);
         })
     })
+
+    test('should not create state with invalid country id', async () => {
+        return request(app).post('/state').send({
+            name: 'testeInvalidID',
+            initials: 'testeInvalidID',
+            country: '1234',
+        }).then((res) => {
+            expect(res.status).toEqual(400);
+            expect(res.body.message).toEqual('country ID is invalid');
+        })
+    });
 
     test('should return all states in database',async() => {
         return request(app).get('/state').then((res) =>{
@@ -150,4 +163,5 @@ describe('test route /country', () => {
             expect(res.body.message).toEqual('invalid ID');
         })
     })
+
 });

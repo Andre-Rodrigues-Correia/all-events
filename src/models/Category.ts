@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import {Schema, model} from 'mongoose';
+import { categoryInterface } from '../interfaces/Interfaces';
 
-const { Schema } = mongoose;
 const CategorySchema = new Schema(
   {
     name: {
@@ -11,4 +11,4 @@ const CategorySchema = new Schema(
   },
   { timestamps: true },
 );
-export default mongoose.model('Category', CategorySchema);
+export default model<categoryInterface>('Category', CategorySchema);

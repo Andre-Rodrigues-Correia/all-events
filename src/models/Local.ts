@@ -20,7 +20,8 @@ const LocalSchema = new Schema(
     type: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Type'
+        ref: 'Type',
+        required: true,
       }
     ],
     address: {
@@ -40,15 +41,18 @@ const LocalSchema = new Schema(
       },
       city: {
         type: Schema.Types.ObjectId,
-        ref: 'City'
+        ref: 'City',
+        required: true,
       },
       state: {
         type: Schema.Types.ObjectId,
-        ref: 'State'
+        ref: 'State',
+        required: true,
       },
       country: {
         type: Schema.Types.ObjectId,
-        ref: 'Country'
+        ref: 'Country',
+        required: true,
       }
     },
   },

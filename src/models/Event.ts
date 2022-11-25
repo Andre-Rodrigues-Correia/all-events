@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import {Schema, model} from 'mongoose';
+import { eventInterface } from '../interfaces/Interfaces';
 
-const { Schema } = mongoose;
 const EventSchema = new Schema(
   {
     name: {
@@ -45,15 +45,18 @@ const EventSchema = new Schema(
       },
       city: {
         type: Schema.Types.ObjectId,
-        ref: 'City'
+        ref: 'City',
+        required: true,
       },
       state: {
         type: Schema.Types.ObjectId,
-        ref: 'State'
+        ref: 'State',
+        required: true,
       },
       country: {
         type: Schema.Types.ObjectId,
-        ref: 'Country'
+        ref: 'Country',
+        required: true,
       }
     },
     start_date: {
@@ -67,4 +70,4 @@ const EventSchema = new Schema(
   },
   { timestamps: true },
 );
-export default mongoose.model('Event', EventSchema);
+export default model<eventInterface>('Event', EventSchema);

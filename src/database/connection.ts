@@ -7,7 +7,8 @@ const DB_STAGING = process.env.DB_STAGING || '';
 const DB_PROD = process.env.DB_PROD || '';
 const ENVIRONMENT = process.env.ENVIRONMENT;
 
-const connectDB = async () => {   
+const connectDB = async () => {
+
     try {
         if(ENVIRONMENT === 'staging'){
             const connect = await mongoose.connect(DB_STAGING);

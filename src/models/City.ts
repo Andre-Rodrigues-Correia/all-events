@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import {Schema, model} from 'mongoose';
+import { cityInterface } from '../interfaces/Interfaces';
 
-const { Schema } = mongoose;
 const CitySchema = new Schema(
   {
     name: {
@@ -10,9 +10,10 @@ const CitySchema = new Schema(
     },
     state: {
         type: Schema.Types.ObjectId,
-        ref: 'State'
+        ref: 'State',
+        required: true,
     },
   },
   { timestamps: true },
 );
-export default mongoose.model('City', CitySchema);
+export default model<cityInterface>('City', CitySchema);

@@ -13,8 +13,4 @@ app.use(
     router,
 )
 
-app.get('/', (req, res) => {
-    res.status(200).send('tudo certo até aqui!')
-})
-
 export default app;
