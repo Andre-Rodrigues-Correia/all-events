@@ -47,4 +47,4 @@ Install all-events whith npm
 ***
 # API documentation
 
-- [Documentação]('../../doc/Documentation.md')
+- [Documentação](https://github.com/Andre-Rodrigues-Correia/all-events/blob/main/doc/Documentation.md)
